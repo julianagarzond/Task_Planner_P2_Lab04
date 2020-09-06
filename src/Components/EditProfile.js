@@ -7,9 +7,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
-export default function FormDialog() {
+export default function EditProfile() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -20,29 +21,41 @@ export default function FormDialog() {
     setOpen(false);
   };
 
-  const [selectedDate, setSelectedDate] = React.useState(Date.now());
+  const [options, setOptions] = React.useState('');
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleChange = (event) => {
+    setOptions(event.target.value);
   };
+  const selection = [
+    {
+      value: 'Ready',
+      label: 'Ready',
+    },
+    {
+      value: 'In Progress',
+      label: 'In Progress',
+    },
+    {
+      value: 'Done',
+      label: 'Done',
+    },
+    
+  ]
+
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>
-        <PostAddIcon></PostAddIcon>
-        
+      <Button  variant="contained" onClick={handleClickOpen}>
+          Edit Profile
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">New Task</DialogTitle>
+        <DialogTitle id="form-dialog-title">Edit Your Profile</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-             Add Your New Task
-          </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Description"
+            label="Full Name"
             type="text"
             fullWidth
           />
@@ -50,24 +63,36 @@ export default function FormDialog() {
             autoFocus
             margin="dense"
             id="name"
-            label="Responsable"
-            type="text"
+            label="E-mail"
+            type="email"
             fullWidth
           />
-          <TextField
+           <TextField
             autoFocus
             margin="dense"
             id="name"
-            type="date"
+            label="Password"
+            type="passwprd"
             fullWidth
           />
+            <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Confirm Password"
+            type="password"
+            fullWidth
+          />
+           
+           
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            Save
           </Button>
           <Button onClick={handleClose} color="primary">
-            Add
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>

@@ -3,9 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Components/Login';
-import Home from './Components/Home';
 import HomeTask from './Components/HomeTask';
-import  FormDialog  from './Components/FormDialog';
+import NewTask from './Components/NewTask';
+import ProfileDrawer from './Components/ProfileDrawer';
 
 
 export class App extends Component {
@@ -25,11 +25,15 @@ export class App extends Component {
           <Login/>
       );
 
-      const HomeView = () => (
+    const HomeView = () => (
         <HomeTask />
     );
     const DialogView = () => (
-        <FormDialog />
+        <NewTask />
+    );
+
+    const ProfileView = () => (
+        <ProfileDrawer />
     );
 
   
@@ -47,6 +51,7 @@ export class App extends Component {
                     <Route exact path="/" component={LoginView}/>
                     <Route exact path="/HomeTask" component={HomeView}/>
                     <Route exact path="/Dialog" component={DialogView}/>
+                    <Route exact path="/Profile" component={ProfileView}/>
                     </div>
                 </div>
             </Router>

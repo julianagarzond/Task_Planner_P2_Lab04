@@ -16,8 +16,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import EventAvailableSharpIcon from '@material-ui/icons/EventAvailableSharp';
 import PostAddIcon from '@material-ui/icons/PostAdd';
-import FormDialog from './FormDialog';
 import { Link } from 'react-router-dom';
+import NewTask from './NewTask';
+import ProfileDrawer from './ProfileDrawer';
+import EditProfile from './EditProfile';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -49,20 +51,26 @@ export default function HomeTask() {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open full-screen dialog
+        Log In 
       </Button>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
-            </IconButton>
-           
             <Typography variant="h6" className={classes.title}>
               Task Planner
             </Typography>
-            Add New Task
-            <FormDialog />
+            <Typography variant="h6" className={classes.title}>
+              <ProfileDrawer></ProfileDrawer>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              <EditProfile></EditProfile>
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+             <NewTask />
+             </Typography>
+            <Link to="/">
+             <Button variant="contained" onClick={handleClose}> Log Out</Button>
+             </Link>
 
           </Toolbar>
         </AppBar>

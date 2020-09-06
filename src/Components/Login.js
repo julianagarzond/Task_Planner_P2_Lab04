@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import HomeTask from './HomeTask';
 
 
 export class Login extends React.Component{
@@ -41,19 +42,8 @@ export class Login extends React.Component{
                                     autoComplete="current-password"
                                 />
                             </FormControl>
-                        <Link to = '/HomeTask' >
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                color="primary"
-                                className="submit"
-                                onClick={this.handleLogin}
-                            >
-                        
-                                Sign in
-                            </Button>
-                        </Link>
+                            <HomeTask>
+                            </HomeTask>
                         </form>
                     </Paper>
                 </main>
