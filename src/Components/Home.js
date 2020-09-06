@@ -9,8 +9,6 @@
   import ListItem from '@material-ui/core/ListItem';
   import ListItemIcon from '@material-ui/core/ListItemIcon';
   import ListItemText from '@material-ui/core/ListItemText';
-  import InboxIcon from '@material-ui/icons/MoveToInbox';
-  import MailIcon from '@material-ui/icons/Mail';
   import Card from '@material-ui/core/Card';
   import CardContent from '@material-ui/core/CardContent';
   import Typography from '@material-ui/core/Typography';
@@ -31,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
   
-  export default function Home(props) {
+export default function Home(props) {
     const classes = useStyles();
     const [state, setState] = React.useState({
       left: false
@@ -165,12 +163,8 @@ const useStyles = makeStyles({
             <FlipCameraAndroidSharpIcon></FlipCameraAndroidSharpIcon>
            
           </Typography>
-        </CardContent>
-        
-      </Card>
-      <br>
-      </br>
-      
+        </CardContent>        
+      </Card>      
       <Card className= "root">
         <CardContent>
           <Typography className="title" color="primary" gutterBottom>

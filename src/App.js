@@ -4,6 +4,8 @@ import './App.css';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import { Login } from './Components/Login';
 import Home from './Components/Home';
+import HomeTask from './Components/HomeTask';
+import  FormDialog  from './Components/FormDialog';
 
 
 export class App extends Component {
@@ -24,7 +26,10 @@ export class App extends Component {
       );
 
       const HomeView = () => (
-        <Home />
+        <HomeTask />
+    );
+    const DialogView = () => (
+        <FormDialog />
     );
 
   
@@ -40,7 +45,8 @@ export class App extends Component {
                  
                     <div>
                     <Route exact path="/" component={LoginView}/>
-                    <Route exact path="/Home" component={HomeView}/>
+                    <Route exact path="/HomeTask" component={HomeView}/>
+                    <Route exact path="/Dialog" component={DialogView}/>
                     </div>
                 </div>
             </Router>

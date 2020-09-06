@@ -41,7 +41,7 @@ export class Login extends React.Component{
                                     autoComplete="current-password"
                                 />
                             </FormControl>
-                        <Link to = '/Home' >
+                        <Link to = '/HomeTask' >
                             <Button
                                 type="submit"
                                 fullWidth
