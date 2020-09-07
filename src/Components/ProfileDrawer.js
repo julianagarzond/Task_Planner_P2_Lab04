@@ -12,6 +12,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import EditProfile from './EditProfile';
+import { Typography } from '@material-ui/core';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const useStyles = makeStyles({
   list: {
@@ -21,6 +23,7 @@ const useStyles = makeStyles({
     width: 'auto',
   },
 });
+
 
 export default function ProfileDrawer() {
   const classes = useStyles();
@@ -37,6 +40,11 @@ export default function ProfileDrawer() {
 
     setState({ ...state, [anchor]: open });
   };
+
+  const [profile, setProfile]= React.useState({username:"julianagarzond", email:"juligardu@gmail.com"});
+  const handleEditProfile=(data) => {
+    setProfile(data);
+ }
  
   const list = (anchor) => (
     <div
@@ -49,14 +57,15 @@ export default function ProfileDrawer() {
     >
 
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {[profile.username, profile.email].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index  === 0? <AccountCircleIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
-           
+             
           </ListItem>
         ))}
       </List>
+     
       <Divider />
      
     </div>
@@ -65,11 +74,16 @@ export default function ProfileDrawer() {
 
   return (
     <div>
+        
 
       {['bottom'].map((anchor) => (
         <React.Fragment key={anchor}>
-        
+
+
+          <ButtonGroup>
           <Button  variant="contained" onClick={toggleDrawer(anchor, true)}> View Profile</Button>
+          <EditProfile fun={handleEditProfile}/>
+          </ButtonGroup>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>

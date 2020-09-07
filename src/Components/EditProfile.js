@@ -10,7 +10,7 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
-export default function EditProfile() {
+export default function EditProfile(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -21,26 +21,13 @@ export default function EditProfile() {
     setOpen(false);
   };
 
-  const [options, setOptions] = React.useState('');
+  const handleEditProfile = () => {
+       localStorage.setItem("username", document.getElementById("username").value);
+       localStorage.setItem("email", document.getElementById("mail").value);
+      const data={username : localStorage.getItem("username"), email:localStorage.getItem("email")}
+      props.fun(data);
+  } ;
 
-  const handleChange = (event) => {
-    setOptions(event.target.value);
-  };
-  const selection = [
-    {
-      value: 'Ready',
-      label: 'Ready',
-    },
-    {
-      value: 'In Progress',
-      label: 'In Progress',
-    },
-    {
-      value: 'Done',
-      label: 'Done',
-    },
-    
-  ]
 
 
   return (
@@ -54,7 +41,7 @@ export default function EditProfile() {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="username"
             label="Full Name"
             type="text"
             fullWidth
@@ -62,9 +49,9 @@ export default function EditProfile() {
            <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="mail"
             label="E-mail"
-            type="email"
+            type="text"
             fullWidth
           />
            <TextField
@@ -88,7 +75,7 @@ export default function EditProfile() {
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleEditProfile} color="primary">
             Save
           </Button>
           <Button onClick={handleClose} color="primary">

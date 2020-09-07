@@ -10,7 +10,7 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import MenuItem from '@material-ui/core/MenuItem';
 
 
-export default function NewTask() {
+export default function NewTask(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -26,6 +26,12 @@ export default function NewTask() {
   const handleChange = (event) => {
     setOptions(event.target.value);
   };
+
+  const handleAddTask = () => {
+  props.fun({description:document.getElementById("description").value,
+  responsable:{name:document.getElementById("responsable").value, email:document.getElementById("correo").value},status:document.getElementById("status") , 
+  duedate: document.getElementById("duedate")});
+  }
   const selection = [
     {
       value: 'Ready',
@@ -58,7 +64,7 @@ export default function NewTask() {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="description"
             label="Description"
             type="text"
             fullWidth
@@ -66,13 +72,21 @@ export default function NewTask() {
            <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="responsable"
+            label="Responsable"
+            type="text"
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="correo"
             label="Responsable"
             type="text"
             fullWidth
           />
            <TextField
-           id="standard-select-currency"
+           id="standard-select-state"
            select
            label="Select"
           value={options}
@@ -89,18 +103,18 @@ export default function NewTask() {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="duedate"
             type="date"
             fullWidth
           />
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
+          <Button onClick={handleAddTask} color="primary">
+          Add Task 
           </Button>
           <Button onClick={handleClose} color="primary">
-            Add Task
+          Cancel
           </Button>
         </DialogActions>
       </Dialog>

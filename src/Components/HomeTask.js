@@ -47,6 +47,16 @@ export default function HomeTask() {
     setOpen(false);
   };
 
+  const [task,setTask]=React.useState([{description:"Implement Login Controller", responsable:{username: "Juliana Garzon",email:"juligardu@gamil.com"}, 
+  status:"ready",dueDate: Date.now() }]);
+
+  const handleAddTask =(t) =>{
+
+    setTask(task.concat(t));
+
+   
+  };
+
  
   return (
     <div>
@@ -63,10 +73,7 @@ export default function HomeTask() {
               <ProfileDrawer></ProfileDrawer>
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              <EditProfile></EditProfile>
-            </Typography>
-            <Typography variant="h6" className={classes.title}>
-             <NewTask />
+             <NewTask fun={handleAddTask}/>
              </Typography>
             <Link to="/">
              <Button variant="contained" onClick={handleClose}> Log Out</Button>
@@ -74,21 +81,36 @@ export default function HomeTask() {
 
           </Toolbar>
         </AppBar>
+
+          
+        {task.map(t => (
         <Card className= "root">
         <CardContent>
           <Typography align="center" className="title" color="primary" gutterBottom>
-            Juliana Garzon Duque
+            {t.description}
           </Typography>
           <Typography align="center" variant="h5" component="h2">
-            Implement Login Controller
+            {t.responsable.username}
+          </Typography>
+          <Typography align="center" variant="h5" component="h2">
+            {t.responsable.email}
+          </Typography>
+          <Typography align="center" variant="h5" component="h2">
+           {t.status}
+          </Typography>
+          <Typography align="center" variant="h5" component="h2">
+           {t.dueDate}
           </Typography>
           <Typography  align="center" variant="body2" component="p">
           
           <EventAvailableSharpIcon></EventAvailableSharpIcon>
            
           </Typography>
+        
         </CardContent>
         </Card>
+        ))}
+    
         
       </Dialog>
     </div>
