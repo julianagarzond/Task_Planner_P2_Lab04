@@ -36,13 +36,6 @@ export class App extends Component {
         <ProfileDrawer />
     );
 
-  
-
-      const bool = localStorage.getItem('isLoggedIn');
-      const isLoggedIn = bool;
-
-
-
         return (
             <Router>
                 <div className="App">
